@@ -1,0 +1,38 @@
+{
+  "Metadata": {
+    "title": "K3 – Keyingi Avlod AI Assistent",
+    "description": "K3 — aqlli suhbatlar, dasturlash, yozish, tadqiqot, tarjima va samaradorlik uchun keyingi avlod AI platformasi.",
+    "ogTitle": "K3 – Keyingi Avlod AI Assistent",
+    "ogDescription": "Suhbatlashish, dasturlash, yozish, tadqiqot va samaradorlik uchun aqlli AI assistentingiz."
+  },
+  "languages": {
+    "en": "Ingliz",
+    "uz": "O‘zbek",
+    "ru": "Rus",
+    "tr": "Turk",
+    "de": "Nemis",
+    "fr": "Fransuz",
+    "es": "Ispan",
+    "pt": "Portugal",
+    "ar": "Arab",
+    "zh": "Xitoy",
+    "ja": "Yapon",
+    "ko": "Koreys"
+  },
+  "sidebar": {
+    "newChat": "Yangi suhbat",
+    "images": "Rasmlar",
+    "chats": "Suhbatlar",
+    "search": "Qidirish",
+    "sidebarFooter": {
+      "settings": "Sozlamalar",
+      "language": "Til",
+      "help": "Yordam",
+      "upgradePlan": "Rejani yangilash",
+      "logOut": "Chiqish"
+    },
+    "sidebarTooltipTriggerOpen": "Yon panelni ochish",
+    "sidebarTooltipTriggerClose": "Yon panelni yopish"
+  },
+  "disclaimer": "K3 xato qilishi mumkin. Ma’lumotlarni tekshiring."
+}

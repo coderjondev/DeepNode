@@ -1,0 +1,38 @@
+{
+  "Metadata": {
+    "title": "K3 – Yeni Nesil Yapay Zeka Asistanı",
+    "description": "K3; akıllı sohbetler, kodlama, yazma, araştırma, çeviri ve üretkenlik için yeni nesil bir yapay zeka platformudur.",
+    "ogTitle": "K3 – Yeni Nesil Yapay Zeka Asistanı",
+    "ogDescription": "Sohbet, kodlama, yazma, araştırma ve üretkenlik için akıllı yapay zeka asistanınız."
+  },
+  "languages": {
+    "en": "İngilizce",
+    "uz": "Özbekçe",
+    "ru": "Rusça",
+    "tr": "Türkçe",
+    "de": "Almanca",
+    "fr": "Fransızca",
+    "es": "İspanyolca",
+    "pt": "Portekizce",
+    "ar": "Arapça",
+    "zh": "Çince",
+    "ja": "Japonca",
+    "ko": "Korece"
+  },
+  "sidebar": {
+    "newChat": "Yeni sohbet",
+    "images": "Görseller",
+    "chats": "Sohbetler",
+    "search": "Ara",
+    "sidebarFooter": {
+      "settings": "Ayarlar",
+      "language": "Dil",
+      "help": "Yardım",
+      "upgradePlan": "Planı yükselt",
+      "logOut": "Çıkış yap"
+    },
+    "sidebarTooltipTriggerOpen": "Kenar çubuğunu aç",
+    "sidebarTooltipTriggerClose": "Kenar çubuğunu kapat"
+  },
+  "disclaimer": "K3 hata yapabilir. Bilgileri kontrol edin."
+}
