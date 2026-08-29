@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-// import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export default async function DashboardLayout({
   children,
@@ -11,7 +11,7 @@ export default async function DashboardLayout({
 }) {
   return (
     <SidebarProvider className="h-dvh min-h-0">
-      {/* <AppSidebar /> */}
+      <AppSidebar />
 
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>

@@ -1,38 +1,26 @@
 {
   "Metadata": {
-    "title": "K3 – Keyingi Avlod AI Assistent",
-    "description": "K3 — aqlli suhbatlar, dasturlash, yozish, tadqiqot, tarjima va samaradorlik uchun keyingi avlod AI platformasi.",
-    "ogTitle": "K3 – Keyingi Avlod AI Assistent",
-    "ogDescription": "Suhbatlashish, dasturlash, yozish, tadqiqot va samaradorlik uchun aqlli AI assistentingiz."
-  },
-  "languages": {
-    "en": "Ingliz",
-    "uz": "O‘zbek",
-    "ru": "Rus",
-    "tr": "Turk",
-    "de": "Nemis",
-    "fr": "Fransuz",
-    "es": "Ispan",
-    "pt": "Portugal",
-    "ar": "Arab",
-    "zh": "Xitoy",
-    "ja": "Yapon",
-    "ko": "Koreys"
+    "title": "KK3 — Suhbat, kodlash va samaradorlik uchun AI yordamchi",
+    "description": "KK3 — suhbatlashish, kod yozish, matn yaratish, tadqiqot olib borish, tarjima va kundalik vazifalarni bajarishda yordam beruvchi sun’iy intellekt yordamchisi. AI yordamida aniq javoblar oling va ishlaringizni tezroq bajaring.",
+    "ogTitle": "KK3 — Suhbat, kodlash va samaradorlik uchun AI yordamchi",
+    "ogDescription": "AI bilan suhbatlashing, kod yozing va xatolarni tuzating, kontent yarating, mavzularni o‘rganing, matnlarni tarjima qiling va kundalik vazifalaringizni hal qilishda yordam oling."
   },
   "sidebar": {
     "newChat": "Yangi suhbat",
     "images": "Rasmlar",
     "chats": "Suhbatlar",
     "search": "Qidirish",
+    "plug": "Kengaytmalar",
+    "library": "Kutubxona",
     "sidebarFooter": {
       "settings": "Sozlamalar",
       "language": "Til",
       "help": "Yordam",
-      "upgradePlan": "Rejani yangilash",
+      "upgradePlan": "Tarifni yangilash",
       "logOut": "Chiqish"
     },
     "sidebarTooltipTriggerOpen": "Yon panelni ochish",
     "sidebarTooltipTriggerClose": "Yon panelni yopish"
   },
-  "disclaimer": "K3 xato qilishi mumkin. Ma’lumotlarni tekshiring."
+  "disclaimer": "KK3 xato qilishi mumkin. Iltimos, ma’lumotlarni tekshiring."
 }

@@ -1,29 +1,17 @@
 {
   "Metadata": {
-    "title": "K3 – Next-Generation AI Assistant",
-    "description": "K3 is a next-generation AI platform for intelligent conversations, coding, writing, research, translation, and productivity.",
-    "ogTitle": "K3 – Next-Generation AI Assistant",
-    "ogDescription": "Your intelligent AI assistant for chatting, coding, writing, research, and productivity."
-  },
-  "languages": {
-    "en": "English",
-    "uz": "Uzbek",
-    "ru": "Russian",
-    "tr": "Turkish",
-    "de": "German",
-    "fr": "French",
-    "es": "Spanish",
-    "pt": "Portuguese",
-    "ar": "Arabic",
-    "zh": "Chinese",
-    "ja": "Japanese",
-    "ko": "Korean"
+    "title": "KK3 — AI Assistant for Chat, Coding & Productivity",
+    "description": "KK3 is an AI assistant for conversations, coding, writing, research, translation, and everyday tasks. Get clear answers and create faster with AI.",
+    "ogTitle": "KK3 — AI Assistant for Chat, Coding & Productivity",
+    "ogDescription": "Chat with AI, write and debug code, create content, research topics, translate text, and get help with everyday tasks."
   },
   "sidebar": {
     "newChat": "New chat",
     "images": "Images",
     "chats": "Chats",
     "search": "Search",
+    "plug": "Plugins",
+    "library": "Library",
     "sidebarFooter": {
       "settings": "Settings",
       "language": "Language",
@@ -34,5 +22,5 @@
     "sidebarTooltipTriggerOpen": "Open sidebar",
     "sidebarTooltipTriggerClose": "Close sidebar"
   },
-  "disclaimer": "K3 can make mistakes. Check info."
+  "disclaimer": "KK3 can make mistakes. Check info."
 }

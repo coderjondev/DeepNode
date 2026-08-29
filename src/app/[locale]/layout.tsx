@@ -1,21 +1,28 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { notFound } from "next/navigation";
+import { Geist, JetBrains_Mono } from "next/font/google";
+import { getTranslations } from "next-intl/server";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toast";
 import { ThemeProvider } from "@/components/theme-provider";
 import { DirectionSync } from "@/components/direction-sync";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations } from "next-intl/server";
+
 import { cn } from "@/lib/utils";
 import { routing } from "@/i18n/routing";
 import { languages } from "@/data/language.data";
-import { notFound } from "next/navigation";
+
 import "../globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION;
+
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -24,12 +31,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://k3.vercel.app";
-const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION;
+type LocaleParams = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
 
-type LocaleParams = { params: Promise<{ locale: string }> };
-
-async function resolveLocale(params: LocaleParams["params"]) {
+async function getValidLocale(params: LocaleParams["params"]) {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
@@ -42,27 +50,46 @@ async function resolveLocale(params: LocaleParams["params"]) {
 export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
-  const locale = await resolveLocale(params);
-  const t = await getTranslations({ locale, namespace: "Metadata" });
+  const locale = await getValidLocale(params);
+  const t = await getTranslations({
+    locale,
+    namespace: "Metadata",
+  });
+
+  if (!BASE_URL) {
+    throw new Error("NEXT_PUBLIC_BASE_URL is not defined");
+  }
+
+  const pageUrl = `${BASE_URL}/${locale}`;
+  const ogImage = `${BASE_URL}/og/kk3.png`;
 
   return {
     metadataBase: new URL(BASE_URL),
 
     title: {
       default: t("title"),
-      template: `%s | K3`,
+      template: `%s | KK3`,
     },
+
     description: t("description"),
 
-    authors: [{ name: "Asilbek Egamnazarov" }],
-    creator: "Asilbek Egamnazarov",
-    publisher: "K3",
-    applicationName: "K3",
+    applicationName: "KK3",
+    generator: "Next.js",
     category: "Technology",
+
+    authors: [
+      {
+        name: "Asilbek Egamnazarov",
+      },
+    ],
+
+    creator: "Asilbek Egamnazarov",
+    publisher: "KK3",
 
     robots: {
       index: true,
       follow: true,
+
       googleBot: {
         index: true,
         follow: true,
@@ -73,46 +100,80 @@ export async function generateMetadata({
     },
 
     alternates: {
-      canonical: `/${locale}`,
+      canonical: pageUrl,
+
       languages: Object.fromEntries(
-        routing.locales.map((loc) => [loc, `${BASE_URL}/${loc}`]),
+        routing.locales.map((locale) => [locale, `${BASE_URL}/${locale}`]),
       ),
     },
 
     openGraph: {
       type: "website",
       locale,
-      siteName: "K3",
-      url: `${BASE_URL}/${locale}`,
+      siteName: "KK3",
+      url: pageUrl,
+
       title: t("ogTitle"),
       description: t("ogDescription"),
+
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "KK3 — AI Chat",
+        },
+      ],
     },
 
     twitter: {
       card: "summary_large_image",
       title: t("ogTitle"),
       description: t("ogDescription"),
+      images: [ogImage],
     },
 
     icons: {
       icon: [
-        { url: "/favicon.ico" },
-        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+        {
+          url: "/favicon.ico",
+        },
+        {
+          url: "/icon-192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          url: "/icon-512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
       ],
-      apple: [{ url: "/apple-touch.png", sizes: "180x180" }],
+
+      apple: [
+        {
+          url: "/apple-touch.png",
+          sizes: "180x180",
+        },
+      ],
+
       shortcut: "/favicon.ico",
     },
 
     manifest: "/site.webmanifest",
+
     ...(GOOGLE_SITE_VERIFICATION && {
-      verification: { google: GOOGLE_SITE_VERIFICATION },
+      verification: {
+        google: GOOGLE_SITE_VERIFICATION,
+      },
     }),
   };
 }
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
 }
 
 export default async function RootLayout({
@@ -121,29 +182,29 @@ export default async function RootLayout({
 }: {
   children: ReactNode;
 } & LocaleParams) {
-  const locale = await resolveLocale(params);
+  const locale = await getValidLocale(params);
 
-  const isRtl = languages.find((lang) => lang.id === locale)?.rtl ?? false;
-  const dir = isRtl ? "rtl" : "ltr";
+  const language = languages.find(({ id }) => id === locale);
+  const direction = language?.rtl ? "rtl" : "ltr";
 
   return (
     <html
       lang={locale}
-      dir={dir}
+      dir={direction}
       suppressHydrationWarning
       className={cn(
         "h-full antialiased",
-        inter.variable,
+        geist.variable,
         jetbrainsMono.variable,
       )}
     >
-      <body className="h-dvh overflow-hidden">
+      <body>
         <NextIntlClientProvider>
           <DirectionSync />
 
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
