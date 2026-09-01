@@ -12,7 +12,6 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider className="h-dvh min-h-0">
       <AppSidebar />
-
       <SidebarInset>{children}</SidebarInset>
     </SidebarProvider>
   );

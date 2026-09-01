@@ -30,44 +30,108 @@ const LanguageMenu = () => {
 
   return (
     <Popover>
+      {/* TRIGGER */}
       <PopoverTrigger
         render={
           <Button
-            variant={"ghost"}
-            className={"justify-between py-4.5 cursor-pointer"}
+            variant="ghost"
+            className="
+              w-full
+              cursor-pointer
+              justify-between
+              py-4.5
+              text-sidebar-foreground
+              transition-colors
+
+              hover:bg-sidebar-accent
+              hover:text-sidebar-accent-foreground
+            "
           >
             <p className="flex items-center gap-1">
               <Globe className="size-4" />
+
               {t("sidebar.sidebarFooter.language")}
             </p>
-            <span className="flex items-center gap-1 text-muted-foreground">
-              {currentLanguage?.flag} {currentLanguage?.nativeName}
-              <ChevronRight className="size-4" />
+
+            <span
+              className="
+                flex
+                items-center
+                gap-1
+                text-muted-foreground
+              "
+            >
+              {currentLanguage?.flag}
+              {currentLanguage?.nativeName}
+
+              <ChevronRight
+                className={`
+                  size-4
+                  transition-transform
+                  ${isRtl ? "rotate-180" : ""}
+                `}
+              />
             </span>
           </Button>
         }
       />
+
+      {/* LANGUAGE LIST */}
       <PopoverContent
         side={isRtl ? "left" : "right"}
-        className={`absolute ${isRtl ? "right-5" : "left-5"} -bottom-10 max-h-70 w-50 gap-1 p-1`}
+        className={`
+          absolute
+          ${isRtl ? "right-5" : "left-5"}
+          -bottom-10
+
+          max-h-70
+          w-50
+          gap-1
+          overflow-y-auto
+          rounded-xl
+
+          border
+          border-border
+          bg-popover
+          p-1
+          text-popover-foreground
+          shadow-lg
+        `}
       >
-        {languages.map((lang) => (
-          <Button
-            key={lang.id}
-            variant={"ghost"}
-            data-active={lang.id === locale}
-            className={
-              "justify-between data-[active=true]:bg-accent cursor-pointer"
-            }
-            onClick={() => changeLanguage(lang.id)}
-          >
-            <p className="flex items-center gap-2">
-              <span className="text-base leading-none">{lang.flag}</span>
-              {lang.nativeName}
-            </p>
-            {lang.id === locale && <Check />}
-          </Button>
-        ))}
+        {languages.map((lang) => {
+          const isActive = lang.id === locale;
+
+          return (
+            <Button
+              key={lang.id}
+              variant="ghost"
+              data-active={isActive}
+              className="
+                h-9
+                w-full
+                cursor-pointer
+                justify-between
+                rounded-lg
+                text-popover-foreground
+
+                hover:bg-accent
+                hover:text-accent-foreground
+
+                data-[active=true]:bg-accent
+                data-[active=true]:text-accent-foreground
+              "
+              onClick={() => changeLanguage(lang.id)}
+            >
+              <p className="flex items-center gap-2">
+                <span className="text-base leading-none">{lang.flag}</span>
+
+                {lang.nativeName}
+              </p>
+
+              {isActive && <Check className="size-4 text-primary" />}
+            </Button>
+          );
+        })}
       </PopoverContent>
     </Popover>
   );

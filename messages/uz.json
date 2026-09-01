@@ -12,6 +12,8 @@
     "search": "Qidirish",
     "plug": "Kengaytmalar",
     "library": "Kutubxona",
+    "history": "Tarix",
+    "history-toggle": "Tarixni ochish/yopish",
     "sidebarFooter": {
       "settings": "Sozlamalar",
       "language": "Til",

@@ -12,6 +12,8 @@
     "search": "Search",
     "plug": "Plugins",
     "library": "Library",
+    "history": "History",
+    "history-toggle": "History toggle",
     "sidebarFooter": {
       "settings": "Settings",
       "language": "Language",

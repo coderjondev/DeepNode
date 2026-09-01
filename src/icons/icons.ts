@@ -22,4 +22,7 @@ export {
   Paperclip,
   Plus,
   Telescope,
+  EllipsisVertical,
+  Moon,
+  Sun,
 } from "lucide-react";

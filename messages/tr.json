@@ -12,6 +12,8 @@
     "search": "Ara",
     "plug": "Eklentiler",
     "library": "Kütüphane",
+    "history": "Geçmiş",
+    "history-toggle": "Geçmişi aç/kapat",
     "sidebarFooter": {
       "settings": "Ayarlar",
       "language": "Dil",

@@ -1,3 +1,5 @@
+"use client";
+
 import { PanelLeft, PanelRight } from "@/icons/icons";
 import { Button } from "./ui/button";
 import {
@@ -15,16 +17,36 @@ const SidebarToggle = ({
   const { open, toggleSidebar } = useSidebar();
   const t = useTranslations("sidebar");
 
+  const label = open
+    ? t("sidebarTooltipTriggerClose")
+    : t("sidebarTooltipTriggerOpen");
+
   return (
     <Tooltip>
       <TooltipTrigger
         render={
           <Button
+            {...props}
             variant="ghost"
             size="icon"
             onClick={toggleSidebar}
-            className={`hidden sm:flex ${className}`}
-            {...props}
+            aria-label={label}
+            className={`
+              hidden
+              sm:flex
+              cursor-pointer
+              rounded-lg
+
+              text-sidebar-foreground
+
+              hover:bg-sidebar-accent
+              hover:text-sidebar-accent-foreground
+
+              focus-visible:ring-2
+              focus-visible:ring-sidebar-ring
+
+              ${className ?? ""}
+            `}
           />
         }
       >
@@ -35,10 +57,16 @@ const SidebarToggle = ({
         )}
       </TooltipTrigger>
 
-      <TooltipContent>
-        {open
-          ? t("sidebarTooltipTriggerClose")
-          : t("sidebarTooltipTriggerOpen")}
+      <TooltipContent
+        side="bottom"
+        className="
+          border-border
+          bg-popover
+          text-popover-foreground
+          shadow-md
+        "
+      >
+        {label}
       </TooltipContent>
     </Tooltip>
   );

@@ -12,6 +12,8 @@
     "search": "Поиск",
     "plug": "Плагины",
     "library": "Библиотека",
+    "history": "История",
+    "history-toggle": "Переключить историю",
     "sidebarFooter": {
       "settings": "Настройки",
       "language": "Язык",

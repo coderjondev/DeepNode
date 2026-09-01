@@ -12,6 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
 import {
   ArrowUpRight,
   ChevronRight,
@@ -20,56 +21,147 @@ import {
   LogOut,
   Settings,
 } from "@/icons/icons";
+
 import { Link } from "@/i18n/navigation";
 
 export function AppPopover() {
   const { state } = useSidebar();
   const t = useTranslations("sidebar.sidebarFooter");
+
   return (
     <Popover>
+      {/* USER TRIGGER */}
       <PopoverTrigger
-        className={`${state === "collapsed" ? "p-0 rounded-full" : "h-12"} justify-start cursor-pointer border-none`}
+        className={`
+          cursor-pointer
+          justify-start
+          border-none
+          bg-transparent
+          text-sidebar-foreground
+          hover:bg-sidebar-accent
+          hover:text-sidebar-accent-foreground
+
+          ${state === "collapsed" ? "rounded-full p-0" : "h-12"}
+        `}
         render={<UserInfo />}
       />
-      <PopoverContent className="gap-0.5 w-66" side="top">
+
+      {/* POPOVER */}
+      <PopoverContent
+        side="top"
+        className="
+          w-66
+          gap-0.5
+          rounded-xl
+          border-border
+          bg-popover
+          p-1.5
+          text-popover-foreground
+          shadow-lg
+        "
+      >
+        {/* SETTINGS */}
         <Button
-          variant={"ghost"}
-          className={"justify-between py-4.5 cursor-pointer"}
+          variant="ghost"
+          className="
+            h-10
+            w-full
+            cursor-pointer
+            justify-between
+            rounded-lg
+            px-2.5
+
+            text-popover-foreground
+
+            hover:bg-accent
+            hover:text-accent-foreground
+          "
         >
-          <p className="flex items-center gap-1">
+          <p className="flex items-center gap-2">
             <Settings className="size-4" />
             {t("settings")}
           </p>
         </Button>
+
+        {/* LANGUAGE */}
         <LanguageMenu />
+
+        {/* HELP */}
         <Button
-          variant={"ghost"}
-          className={"justify-between py-4.5 cursor-pointer"}
+          variant="ghost"
+          className="
+            h-10
+            w-full
+            cursor-pointer
+            justify-between
+            rounded-lg
+            px-2.5
+
+            text-popover-foreground
+
+            hover:bg-accent
+            hover:text-accent-foreground
+          "
         >
-          <p className="flex items-center gap-1">
+          <p className="flex items-center gap-2">
             <HelpCircle className="size-4" />
             {t("help")}
           </p>
-          <ChevronRight className="size-4" />
+
+          <ChevronRight className="size-4 text-muted-foreground" />
         </Button>
-        <Separator className={"my-1"} />
+
+        <Separator className="my-1 bg-border" />
+
+        {/* UPGRADE */}
         <Link
-          href={""}
-          className={
-            "flex items-center px-2 justify-between py-2 rounded-lg hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50"
-          }
+          href="/pricing"
+          className="
+            flex
+            h-10
+            items-center
+            justify-between
+            rounded-lg
+            px-2.5
+
+            text-popover-foreground
+
+            transition-colors
+
+            hover:bg-accent
+            hover:text-accent-foreground
+
+            focus-visible:outline-none
+            focus-visible:ring-2
+            focus-visible:ring-ring
+          "
         >
-          <p className="flex items-center gap-1">
-            <CircleFadingArrowUp className="size-4" />
+          <p className="flex items-center gap-2">
+            <CircleFadingArrowUp className="size-4 text-primary" />
             {t("upgradePlan")}
           </p>
-          <ArrowUpRight className="size-4" />
+
+          <ArrowUpRight className="size-4 text-muted-foreground" />
         </Link>
+
+        {/* LOG OUT */}
         <Button
-          variant={"ghost"}
-          className={"justify-between py-4.5 cursor-pointer"}
+          variant="ghost"
+          className="
+            h-10
+            w-full
+            cursor-pointer
+            justify-between
+            rounded-lg
+            px-2.5
+
+            text-popover-foreground
+
+            hover:bg-accent
+            hover:text-accent-foreground
+          "
         >
-          <p className="flex items-center gap-1">
+          <p className="flex items-center gap-2">
             <LogOut className="size-4" />
             {t("logOut")}
           </p>

@@ -12,8 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "./ui/separator";
-import { X } from "@/icons/icons";
-import { Eye, EyeOff } from "@/icons/icons";
+import { X, Eye, EyeOff } from "@/icons/icons";
 
 function GoogleIcon() {
   return (
@@ -57,82 +56,179 @@ export function AuthDialog({ children, ...props }: Props) {
         render={
           <Button
             {...props}
-            className={"hidden sm:flex rounded-full h-10 px-4 cursor-pointer"}
+            className="hidden h-10 cursor-pointer rounded-full px-4 sm:flex"
           >
             {children}
           </Button>
         }
       />
+
       <DialogContent
         showCloseButton={false}
-        className="sm:max-w-sm p-0 gap-0 overflow-hidden rounded-xl text-white"
+        className="
+          gap-0
+          overflow-hidden
+          rounded-xl
+          border
+          border-border
+          bg-card
+          p-0
+          text-card-foreground
+          shadow-xl
+          sm:max-w-sm
+        "
       >
-        <Card className="border-0 shadow-none bg-transparent gap-6 py-6">
-          <CardHeader className="text-center px-6 relative">
+        <Card className="gap-6 border-0 bg-transparent py-6 shadow-none">
+          {/* HEADER */}
+          <CardHeader className="relative px-6 text-center">
             <DialogTrigger
               render={
                 <Button
-                  variant={"ghost"}
+                  variant="ghost"
                   aria-label="Close"
-                  size={"icon"}
-                  className="absolute right-4 top-0 text-white/60 hover:text-white transition-colors cursor-pointer"
+                  size="icon"
+                  className="
+                    absolute
+                    right-4
+                    top-0
+                    cursor-pointer
+                    rounded-full
+                    text-muted-foreground
+                    transition-colors
+                    hover:bg-accent
+                    hover:text-foreground
+                  "
                 >
-                  <X size={40} />
+                  <X className="size-5" />
                 </Button>
               }
             />
-            <CardTitle className="text-2xl font-semibold text-white">
+
+            <CardTitle className="text-2xl font-semibold text-foreground">
               Log in or sign up
             </CardTitle>
-            <CardDescription className="text-white/60 text-[15px] leading-snug">
+
+            <CardDescription
+              className="
+                text-[15px]
+                leading-snug
+                text-muted-foreground
+              "
+            >
               You&apos;ll get smarter responses and can upload files, images
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="px-6 flex flex-col gap-2">
+          {/* CONTENT */}
+          <CardContent className="flex flex-col gap-2 px-6">
+            {/* EMAIL */}
             <Input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-11 rounded-full border-white/15 bg-transparent px-4 text-white placeholder:text-white/50 focus-visible:ring-white/30"
+              className="
+                h-11
+                rounded-full
+                border-input
+                bg-background
+                px-4
+                text-foreground
+                placeholder:text-muted-foreground
+                focus-visible:ring-ring
+              "
             />
+
+            {/* PASSWORD */}
             <div className="relative">
               <Input
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-11 rounded-full border-white/15 bg-transparent px-4 pr-12! text-white placeholder:text-white/50 focus-visible:ring-white/30"
+                className="
+                  h-11
+                  rounded-full
+                  border-input
+                  bg-background
+                  px-4
+                  pr-12!
+                  text-foreground
+                  placeholder:text-muted-foreground
+                  focus-visible:ring-ring
+                "
               />
+
               <Button
+                type="button"
                 onClick={togglePasswordVisibility}
-                variant={"ghost"}
-                className={
-                  "absolute right-0 h-full w-11 rounded-full cursor-pointer"
-                }
+                variant="ghost"
+                size="icon"
+                className="
+                  absolute
+                  right-0
+                  top-0
+                  h-11
+                  w-11
+                  cursor-pointer
+                  rounded-full
+                  text-muted-foreground
+                  hover:bg-accent
+                  hover:text-foreground
+                "
               >
-                {showPassword ? <EyeOff /> : <Eye />}
+                {showPassword ? (
+                  <EyeOff className="size-4" />
+                ) : (
+                  <Eye className="size-4" />
+                )}
               </Button>
             </div>
 
+            {/* CONTINUE */}
             <Button
               type="submit"
-              className="h-11 w-full rounded-full bg-white text-black hover:bg-white/90 font-medium cursor-pointer"
+              className="
+                h-11
+                w-full
+                cursor-pointer
+                rounded-full
+                bg-primary
+                font-medium
+                text-primary-foreground
+                hover:bg-primary/90
+              "
             >
               Continue
             </Button>
 
+            {/* OR */}
             <div className="relative my-2 flex items-center">
-              <Separator className="h-px flex-1 bg-white/15" />
-              <span className="px-3 text-xs text-white/50">OR</span>
-              <Separator className="h-px flex-1 bg-white/15" />
+              <Separator className="h-px flex-1 bg-border" />
+
+              <span className="px-3 text-xs text-muted-foreground">OR</span>
+
+              <Separator className="h-px flex-1 bg-border" />
             </div>
 
+            {/* GOOGLE */}
             <Button
               type="button"
               variant="outline"
-              className="h-12 w-full justify-center gap-2 rounded-full border-white/15 bg-transparent text-white hover:bg-white/10 hover:text-white font-normal cursor-pointer"
+              className="
+                h-12
+                w-full
+                cursor-pointer
+                justify-center
+                gap-2
+                rounded-full
+                border-border
+                bg-background
+                font-normal
+                text-foreground
+                hover:bg-accent
+                hover:text-accent-foreground
+              "
             >
               <GoogleIcon />
               Continue with Google

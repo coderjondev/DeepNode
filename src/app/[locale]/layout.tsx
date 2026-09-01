@@ -15,6 +15,7 @@ import { routing } from "@/i18n/routing";
 import { languages } from "@/data/language.data";
 
 import "../globals.css";
+import { StructuredData } from "@/components/seo/structured-data";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION;
@@ -51,6 +52,7 @@ export async function generateMetadata({
   params,
 }: LocaleParams): Promise<Metadata> {
   const locale = await getValidLocale(params);
+
   const t = await getTranslations({
     locale,
     namespace: "Metadata",
@@ -63,6 +65,12 @@ export async function generateMetadata({
   const pageUrl = `${BASE_URL}/${locale}`;
   const ogImage = `${BASE_URL}/og/kk3.png`;
 
+  const languages = Object.fromEntries([
+    ...routing.locales.map((locale) => [locale, `${BASE_URL}/${locale}`]),
+
+    ["x-default", `${BASE_URL}/${routing.defaultLocale}`],
+  ]);
+
   return {
     metadataBase: new URL(BASE_URL),
 
@@ -74,8 +82,19 @@ export async function generateMetadata({
     description: t("description"),
 
     applicationName: "KK3",
+
     generator: "Next.js",
+
     category: "Technology",
+
+    keywords: [
+      "KK3",
+      "AI",
+      "AI chat",
+      "AI assistant",
+      "artificial intelligence",
+      "AI chatbot",
+    ],
 
     authors: [
       {
@@ -93,6 +112,7 @@ export async function generateMetadata({
       googleBot: {
         index: true,
         follow: true,
+
         "max-image-preview": "large",
         "max-snippet": -1,
         "max-video-preview": -1,
@@ -100,21 +120,21 @@ export async function generateMetadata({
     },
 
     alternates: {
-      canonical: pageUrl,
-
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [locale, `${BASE_URL}/${locale}`]),
-      ),
+      canonical: "canonical",
+      languages,
     },
 
     openGraph: {
       type: "website",
-      locale,
-      siteName: "KK3",
+
       url: pageUrl,
+
+      siteName: "KK3",
 
       title: t("ogTitle"),
       description: t("ogDescription"),
+
+      locale,
 
       images: [
         {
@@ -122,14 +142,18 @@ export async function generateMetadata({
           width: 1200,
           height: 630,
           alt: "KK3 — AI Chat",
+          type: "image/png",
         },
       ],
     },
 
     twitter: {
       card: "summary_large_image",
+
       title: t("ogTitle"),
+
       description: t("ogDescription"),
+
       images: [ogImage],
     },
 
@@ -154,6 +178,7 @@ export async function generateMetadata({
         {
           url: "/apple-touch.png",
           sizes: "180x180",
+          type: "image/png",
         },
       ],
 
@@ -199,6 +224,7 @@ export default async function RootLayout({
       )}
     >
       <body>
+        <StructuredData locale={locale} />
         <NextIntlClientProvider>
           <DirectionSync />
 
