@@ -30,7 +30,7 @@ import {
   SquarePen,
   Search,
   LibraryBig,
-  Plug,
+  // Plug,
   ChevronRight,
   EllipsisVertical,
 } from "@/icons/icons";
@@ -67,12 +67,12 @@ export function AppSidebar() {
       href: "/library",
       name: t("library"),
     },
-    {
-      id: 4,
-      icon: <Plug />,
-      href: "/plugins",
-      name: t("plug"),
-    },
+    // {
+    //   id: 4,
+    //   icon: <Plug />,
+    //   href: "/plugins",
+    //   name: t("plug"),
+    // },
   ];
 
   return (
@@ -90,13 +90,7 @@ export function AppSidebar() {
         {state === "expanded" && (
           <Link
             href="/"
-            className="
-              font-semibold
-              tracking-tight
-              text-sidebar-foreground
-              transition-colors
-              hover:text-sidebar-primary
-            "
+            className=" font-semibold tracking-tight text-xl text-sidebar-foreground transition-colors hover:text-sidebar-primary"
           >
             KK3
           </Link>
@@ -135,9 +129,7 @@ export function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      {/* CONTENT */}
       <SidebarContent className="flex min-h-0 flex-col overflow-hidden">
-        {/* MAIN NAVIGATION */}
         <SidebarGroup className="flex shrink-0 flex-col">
           <SidebarMenu className="gap-1">
             {sidebarItem.map((item) => {
@@ -161,24 +153,9 @@ export function AppSidebar() {
                         children: name,
                         side: isRtl ? "left" : "right",
                       }}
-                      className="
-                        h-10
-                        cursor-pointer
-                        rounded-lg
-                        px-2.5
-                        text-sidebar-foreground
-                        transition-colors
-                        hover:bg-sidebar-accent
-                        hover:text-sidebar-accent-foreground
-
-                        data-[active=true]:bg-sidebar-primary
-                        data-[active=true]:text-sidebar-primary-foreground
-                      "
+                      className="h-10 cursor-pointer rounded-lg px-2.5 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground"
                     >
-                      <span className={id === 4 ? "rotate-45" : ""}>
-                        {icon}
-                      </span>
-
+                      {icon}
                       {state === "expanded" && name}
                     </SidebarMenuButton>
                   </Link>
@@ -188,34 +165,20 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
 
-        {/* CHAT HISTORY */}
         {state === "expanded" && (
           <SidebarGroup className="relative overflow-y-auto scrollbar-hidden">
             <SidebarMenu>
               <SidebarMenuItem>
-                {/* HISTORY HEADER */}
                 <div className="sticky -top-2 z-20 bg-sidebar">
                   <SidebarMenuButton
                     onClick={() => setChatsOpen((prev) => !prev)}
-                    className="
-                      h-10
-                      cursor-pointer
-                      justify-between
-                      px-2.5
-                      text-sidebar-foreground
-                      transition-colors
-                      hover:bg-sidebar-accent
-                      hover:text-sidebar-accent-foreground
-                    "
+                    className="h-10 cursor-pointer justify-between px-2.5 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                     aria-expanded={chatsOpen}
                   >
                     {t("history")}
 
                     <span
-                      className={`
-                        cursor-pointer
-                        transition-transform
-                        duration-200
+                      className={`cursor-pointer transition-transform duration-200
                         ${chatsOpen ? "rotate-90" : ""}
                       `}
                       aria-label={t("history-toggle")}
@@ -225,12 +188,8 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 </div>
 
-                {/* CHAT LIST */}
                 <div
-                  className={`
-                    grid
-                    transition-[grid-template-rows]
-                    duration-300
+                  className={` grid transition-[grid-template-rows] duration-300
                     ${chatsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}
                   `}
                 >
@@ -244,69 +203,25 @@ export function AppSidebar() {
                             key={index}
                             className="group/item relative"
                           >
-                            {/* CHAT NUMBER */}
-                            <span
-                              className="
-                                  absolute
-                                  -left-4.5
-                                  top-1/2
-                                  z-10
-                                  flex
-                                  h-3.75
-                                  w-3.75
-                                  -translate-y-1/2
-                                  items-center
-                                  justify-center
-                                  rounded-full
-                                  bg-sidebar
-                                  text-[10px]
-                                  text-sidebar-foreground/60
-                                "
-                            >
+                            <span className="absolute -left-4.5 top-1/2 z-10 flex h-3.75 w-3.75 -translate-y-1/2 items-center justify-center rounded-full bg-sidebar text-[10px] text-sidebar-foreground/60">
                               {index + 1}
                             </span>
 
-                            {/* CHAT */}
                             <SidebarMenuSubButton
                               isActive={isSelected}
                               onClick={() => setSelectedChat(index)}
                               href={`/chat/${index}`}
                               hrefLang={locale}
-                              className="
-                                  ml-1
-                                  h-8
-                                  w-[90%]
-                                  cursor-pointer
-                                  transition-colors
-
-                                  data-[active=true]:bg-sidebar-accent
-                                  data-[active=true]:text-sidebar-accent-foreground
-                                "
+                              className="ml-1 h-8 w-[90%] cursor-pointer transition-colors data-[active=true]:bg-sidebar-accent 
+                              data-[active=true]:text-sidebar-accent-foreground"
                             >
                               Chat {index + 1}
                             </SidebarMenuSubButton>
 
-                            {/* ACTIONS */}
                             <Button
                               variant="ghost"
                               size="icon"
-                              className={`
-                                  absolute
-                                  -right-5.5
-                                  top-0
-                                  size-8
-                                  cursor-pointer
-                                  opacity-0
-                                  transition-all
-                                  duration-100
-
-                                  group-hover/item:opacity-100
-
-                                  ${isSelected ? "opacity-100" : ""}
-
-                                  text-sidebar-foreground
-                                  hover:bg-sidebar-accent
-                                  hover:text-sidebar-accent-foreground
+                              className={` absolute -right-5.5 top-0 size-8 cursor-pointer opacity-0 transition-all duration-100 group-hover/item:opacity-100 ${isSelected ? "opacity-100" : ""} text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground
                                 `}
                               aria-label="chat actions"
                             >
@@ -324,7 +239,6 @@ export function AppSidebar() {
         )}
       </SidebarContent>
 
-      {/* FOOTER */}
       <Separator className="bg-sidebar-border" />
 
       <SidebarFooter>

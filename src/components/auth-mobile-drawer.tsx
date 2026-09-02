@@ -48,7 +48,6 @@ export function AuthMobileDrawer() {
 
   return (
     <Drawer showSwipeHandle>
-      {/* TRIGGER */}
       <DrawerTrigger
         render={
           <Button
@@ -68,7 +67,6 @@ export function AuthMobileDrawer() {
         }
       />
 
-      {/* DRAWER */}
       <DrawerContent
         className="
           gap-0
@@ -81,7 +79,6 @@ export function AuthMobileDrawer() {
         "
       >
         <Card className="gap-6 border-0 bg-transparent py-6 shadow-none">
-          {/* HEADER */}
           <CardHeader className="relative px-6 text-center">
             <CardTitle className="text-2xl font-semibold text-foreground">
               Log in or sign up
@@ -98,16 +95,14 @@ export function AuthMobileDrawer() {
             </CardDescription>
           </CardHeader>
 
-          {/* CONTENT */}
           <CardContent className="flex flex-col gap-2 px-6">
-            {/* EMAIL */}
             <Input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="
-                h-11
+                h-10
                 rounded-full
                 border-input
                 bg-background
@@ -118,7 +113,6 @@ export function AuthMobileDrawer() {
               "
             />
 
-            {/* PASSWORD */}
             <div className="relative">
               <Input
                 type={showPassword ? "text" : "password"}
@@ -126,7 +120,7 @@ export function AuthMobileDrawer() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="
-                  h-11
+                  h-10
                   rounded-full
                   border-input
                   bg-background
@@ -147,7 +141,7 @@ export function AuthMobileDrawer() {
                   absolute
                   right-0
                   top-0
-                  h-11
+                  h-10
                   w-11
                   cursor-pointer
                   rounded-full
@@ -164,11 +158,10 @@ export function AuthMobileDrawer() {
               </Button>
             </div>
 
-            {/* CONTINUE */}
             <Button
               type="submit"
               className="
-                h-11
+                h-10
                 w-full
                 cursor-pointer
                 rounded-full
@@ -181,7 +174,6 @@ export function AuthMobileDrawer() {
               Continue
             </Button>
 
-            {/* OR */}
             <div className="relative my-2 flex items-center">
               <Separator className="h-px flex-1 bg-border" />
 
@@ -190,7 +182,6 @@ export function AuthMobileDrawer() {
               <Separator className="h-px flex-1 bg-border" />
             </div>
 
-            {/* GOOGLE */}
             <Button
               type="button"
               variant="outline"

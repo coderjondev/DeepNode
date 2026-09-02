@@ -27,4 +27,12 @@ export {
   Sun,
   File,
   Upload,
+  FileText,
+  List,
+  SlidersHorizontal,
+  LayoutGrid,
+  Film,
+  FolderOpen,
+  ChevronDown,
+  ImageIcon,
 } from "lucide-react";

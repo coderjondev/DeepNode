@@ -79,7 +79,6 @@ export function AuthDialog({ children, ...props }: Props) {
         "
       >
         <Card className="gap-6 border-0 bg-transparent py-6 shadow-none">
-          {/* HEADER */}
           <CardHeader className="relative px-6 text-center">
             <DialogTrigger
               render={
@@ -119,27 +118,15 @@ export function AuthDialog({ children, ...props }: Props) {
             </CardDescription>
           </CardHeader>
 
-          {/* CONTENT */}
           <CardContent className="flex flex-col gap-2 px-6">
-            {/* EMAIL */}
             <Input
               type="email"
               placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="
-                h-11
-                rounded-full
-                border-input
-                bg-background
-                px-4
-                text-foreground
-                placeholder:text-muted-foreground
-                focus-visible:ring-ring
-              "
+              className="h-10 rounded-full border-input bg-background px-4 text-foreground placeholder:text-muted-foreground focus-visible:ring-ring"
             />
 
-            {/* PASSWORD */}
             <div className="relative">
               <Input
                 type={showPassword ? "text" : "password"}
@@ -147,7 +134,7 @@ export function AuthDialog({ children, ...props }: Props) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="
-                  h-11
+                  h-10
                   rounded-full
                   border-input
                   bg-background
@@ -168,7 +155,7 @@ export function AuthDialog({ children, ...props }: Props) {
                   absolute
                   right-0
                   top-0
-                  h-11
+                  h-10
                   w-11
                   cursor-pointer
                   rounded-full
@@ -185,11 +172,10 @@ export function AuthDialog({ children, ...props }: Props) {
               </Button>
             </div>
 
-            {/* CONTINUE */}
             <Button
               type="submit"
               className="
-                h-11
+                h-10
                 w-full
                 cursor-pointer
                 rounded-full
@@ -202,7 +188,6 @@ export function AuthDialog({ children, ...props }: Props) {
               Continue
             </Button>
 
-            {/* OR */}
             <div className="relative my-2 flex items-center">
               <Separator className="h-px flex-1 bg-border" />
 
