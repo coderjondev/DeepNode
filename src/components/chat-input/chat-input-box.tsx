@@ -24,7 +24,7 @@ export function ChatInputBox({
 
   return (
     <AttachmentDropzone disabled={disabled} onDropFiles={chatInput.addFiles}>
-      <div className="overflow-hidden rounded-3xl border border-border bg-background shadow-sm transition-all duration-200 focus-within:border-primary/40 focus-within:shadow-md">
+      <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-sm transition-all duration-200 focus-within:border-primary/40 focus-within:shadow-md">
         <AttachmentPreview
           attachments={chatInput.attachments}
           onRemove={chatInput.removeAttachment}

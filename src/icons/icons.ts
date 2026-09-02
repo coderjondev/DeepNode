@@ -25,4 +25,6 @@ export {
   EllipsisVertical,
   Moon,
   Sun,
+  File,
+  Upload,
 } from "lucide-react";

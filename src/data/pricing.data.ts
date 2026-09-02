@@ -1,4 +1,4 @@
-import type { Plan, FaqItem } from "@/types/pricing.types";
+import type { Plan } from "@/types/pricing.types";
 import { countModelsForTier } from "@/components/model";
 
 const freeModels = countModelsForTier("free");

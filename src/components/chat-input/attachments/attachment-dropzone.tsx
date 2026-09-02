@@ -2,6 +2,7 @@
 
 import { AttachmentDropzoneProps } from "@/types/chat-input.type";
 import { DragEvent, useState } from "react";
+import { Upload } from "@/icons/icons";
 
 export function AttachmentDropzone({
   disabled = false,
@@ -64,7 +65,7 @@ export function AttachmentDropzone({
         <div className="absolute inset-0 z-50 flex items-center justify-center rounded-3xl border-2 border-dashed border-primary bg-background/95 backdrop-blur-sm">
           <div className="flex flex-col items-center gap-2">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <UploadIcon />
+              <Upload />
             </div>
 
             <p className="text-sm font-medium">Drop files here</p>
@@ -78,24 +79,5 @@ export function AttachmentDropzone({
 
       {children}
     </div>
-  );
-}
-
-function UploadIcon() {
-  return (
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12 3v12" />
-      <path d="m7 8 5-5 5 5" />
-      <path d="M5 21h14" />
-    </svg>
   );
 }

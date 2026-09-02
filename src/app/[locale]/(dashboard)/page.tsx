@@ -9,7 +9,7 @@ const page = () => {
   return (
     <>
       <div className="flex justify-end p-2.5 relative w-full overflow-hidden h-screen">
-        <Meteors number={7} />
+        <Meteors number={10} />
         <div className="flex gap-2.5">
           <AuthDialog>Log in</AuthDialog>
           <AuthDialog variant={"outline"}>Sign up</AuthDialog>

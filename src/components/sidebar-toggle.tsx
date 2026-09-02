@@ -31,20 +31,7 @@ const SidebarToggle = ({
             size="icon"
             onClick={toggleSidebar}
             aria-label={label}
-            className={`
-              hidden
-              sm:flex
-              cursor-pointer
-              rounded-lg
-
-              text-sidebar-foreground
-
-              hover:bg-sidebar-accent
-              hover:text-sidebar-accent-foreground
-
-              focus-visible:ring-2
-              focus-visible:ring-sidebar-ring
-
+            className={` hidden sm:flex cursor-pointer rounded-lg text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring
               ${className ?? ""}
             `}
           />
@@ -57,17 +44,7 @@ const SidebarToggle = ({
         )}
       </TooltipTrigger>
 
-      <TooltipContent
-        side="bottom"
-        className="
-          border-border
-          bg-popover
-          text-popover-foreground
-          shadow-md
-        "
-      >
-        {label}
-      </TooltipContent>
+      <TooltipContent side="bottom">{label}</TooltipContent>
     </Tooltip>
   );
 };

@@ -14,7 +14,7 @@ export function ChatInputTextarea({
   onKeyDown,
 }: ChatInputTextareaProps) {
   return (
-    <div className="px-4 pt-3">
+    <div className="pl-2.5 pr-0 pt-2.5">
       <Textarea
         ref={textareaRef}
         value={value}
@@ -24,7 +24,7 @@ export function ChatInputTextarea({
         onChange={(event) => onChange(event.target.value)}
         onPaste={onPaste}
         onKeyDown={onKeyDown}
-        className="block max-h-45 w-full resize-none overflow-y-auto bg-transparent text-[15px] leading-6 outline-none placeholder:text-muted-foreground"
+        className="block max-h-45 w-full resize-none overflow-y-auto min-h-11 bg-transparent! focus-visible:ring-0 text-[15px] px-0 border-none leading-6 outline-none placeholder:text-muted-foreground"
       />
     </div>
   );
