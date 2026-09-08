@@ -1,5 +1,3 @@
-"use client";
-
 import { AuthDialog } from "@/components/auth-dialog";
 import { AuthMobileDrawer } from "@/components/auth-mobile-drawer";
 import ChatInput from "@/components/chat-input/chat-input";

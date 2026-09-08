@@ -35,4 +35,6 @@ export {
   FolderOpen,
   ChevronDown,
   ImageIcon,
+  FileUp,
+  Send,
 } from "lucide-react";

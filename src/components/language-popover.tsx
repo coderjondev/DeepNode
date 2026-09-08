@@ -30,22 +30,11 @@ const LanguageMenu = () => {
 
   return (
     <Popover>
-      {/* TRIGGER */}
       <PopoverTrigger
         render={
           <Button
             variant="ghost"
-            className="
-              w-full
-              cursor-pointer
-              justify-between
-              py-4.5
-              text-sidebar-foreground
-              transition-colors
-
-              hover:bg-sidebar-accent
-              hover:text-sidebar-accent-foreground
-            "
+            className="w-full cursor-pointer justify-between py-4.5 text-sidebar-foreground rounded-full transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
           >
             <p className="flex items-center gap-1">
               <Globe className="size-4" />
@@ -53,14 +42,7 @@ const LanguageMenu = () => {
               {t("sidebar.sidebarFooter.language")}
             </p>
 
-            <span
-              className="
-                flex
-                items-center
-                gap-1
-                text-muted-foreground
-              "
-            >
+            <span className="flexitems-centergap-1text-muted-foreground">
               {currentLanguage?.flag}
               {currentLanguage?.nativeName}
 
@@ -76,27 +58,9 @@ const LanguageMenu = () => {
         }
       />
 
-      {/* LANGUAGE LIST */}
       <PopoverContent
         side={isRtl ? "left" : "right"}
-        className={`
-          absolute
-          ${isRtl ? "right-5" : "left-5"}
-          -bottom-10
-
-          max-h-70
-          w-50
-          gap-1
-          overflow-y-auto
-          rounded-xl
-
-          border
-          border-border
-          bg-popover
-          p-1
-          text-popover-foreground
-          shadow-lg
-        `}
+        className={`absolute ${isRtl ? "right-5" : "left-5"} -bottom-10 max-h-70 w-50 gap-1 overflow-y-auto rounded-xl border border-border bg-popover p-1 text-popover-foreground shadow-lg`}
       >
         {languages.map((lang) => {
           const isActive = lang.id === locale;
@@ -106,20 +70,7 @@ const LanguageMenu = () => {
               key={lang.id}
               variant="ghost"
               data-active={isActive}
-              className="
-                h-9
-                w-full
-                cursor-pointer
-                justify-between
-                rounded-lg
-                text-popover-foreground
-
-                hover:bg-accent
-                hover:text-accent-foreground
-
-                data-[active=true]:bg-accent
-                data-[active=true]:text-accent-foreground
-              "
+              className="h-9 w-full cursor-pointer justify-between rounded-full text-popover-foreground hover:bg-accent hover:text-accent-foreground"
               onClick={() => changeLanguage(lang.id)}
             >
               <p className="flex items-center gap-2">

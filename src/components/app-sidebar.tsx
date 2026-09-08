@@ -81,7 +81,6 @@ export function AppSidebar() {
       side={isRtl ? "right" : "left"}
       className="border-sidebar-border"
     >
-      {/* HEADER */}
       <SidebarHeader
         className={`flex-row items-center justify-between ${
           state === "expanded" ? "pl-5" : ""
@@ -96,7 +95,7 @@ export function AppSidebar() {
           </Link>
         )}
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           {state === "expanded" && (
             <Tooltip>
               <TooltipTrigger
@@ -105,12 +104,7 @@ export function AppSidebar() {
                     variant="ghost"
                     size="icon"
                     aria-label={t("search")}
-                    className="
-                      cursor-pointer
-                      text-sidebar-foreground
-                      hover:bg-sidebar-accent
-                      hover:text-sidebar-accent-foreground
-                    "
+                    className="rounded-full cursor-pointer text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   >
                     <Search className="size-4" />
                   </Button>
@@ -125,7 +119,7 @@ export function AppSidebar() {
             </Tooltip>
           )}
 
-          <SidebarToggle className="cursor-w-resize" />
+          <SidebarToggle className="rounded-full cursor-w-resize" />
         </div>
       </SidebarHeader>
 
@@ -153,7 +147,7 @@ export function AppSidebar() {
                         children: name,
                         side: isRtl ? "left" : "right",
                       }}
-                      className="h-10 cursor-pointer rounded-lg px-2.5 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground"
+                      className="h-8 px-2.5 rounded-full cursor-pointer transition-all duration-300"
                     >
                       {icon}
                       {state === "expanded" && name}
@@ -166,30 +160,30 @@ export function AppSidebar() {
         </SidebarGroup>
 
         {state === "expanded" && (
-          <SidebarGroup className="relative overflow-y-auto scrollbar-hidden">
+          <SidebarGroup className="relative overflow-y-auto no-scrollbar">
             <SidebarMenu>
               <SidebarMenuItem>
                 <div className="sticky -top-2 z-20 bg-sidebar">
                   <SidebarMenuButton
                     onClick={() => setChatsOpen((prev) => !prev)}
-                    className="h-10 cursor-pointer justify-between px-2.5 text-sidebar-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    className="h-9 px-2.5 rounded-full cursor-pointer justify-between"
                     aria-expanded={chatsOpen}
                   >
                     {t("history")}
 
                     <span
-                      className={`cursor-pointer transition-transform duration-200
+                      className={`cursor-pointer transition-transform duration-300
                         ${chatsOpen ? "rotate-90" : ""}
                       `}
                       aria-label={t("history-toggle")}
                     >
-                      <ChevronRight className="size-4.5" />
+                      <ChevronRight className="size-4" />
                     </span>
                   </SidebarMenuButton>
                 </div>
 
                 <div
-                  className={` grid transition-[grid-template-rows] duration-300
+                  className={`grid transition-all duration-300
                     ${chatsOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}
                   `}
                 >
@@ -203,7 +197,7 @@ export function AppSidebar() {
                             key={index}
                             className="group/item relative"
                           >
-                            <span className="absolute -left-4.5 top-1/2 z-10 flex h-3.75 w-3.75 -translate-y-1/2 items-center justify-center rounded-full bg-sidebar text-[10px] text-sidebar-foreground/60">
+                            <span className="absolute -left-4.5 top-1/2 z-10 flex h-3.75 w-3.75 -translate-y-1/2 items-center justify-center rounded-full bg-sidebar text-[10px]">
                               {index + 1}
                             </span>
 
@@ -212,8 +206,7 @@ export function AppSidebar() {
                               onClick={() => setSelectedChat(index)}
                               href={`/chat/${index}`}
                               hrefLang={locale}
-                              className="ml-1 h-8 w-[90%] cursor-pointer transition-colors data-[active=true]:bg-sidebar-accent 
-                              data-[active=true]:text-sidebar-accent-foreground"
+                              className="h-7 w-[90%] rounded-full cursor-pointer transition-colors duration-300 text-xs!"
                             >
                               Chat {index + 1}
                             </SidebarMenuSubButton>
@@ -221,7 +214,7 @@ export function AppSidebar() {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className={` absolute -right-5.5 top-0 size-8 cursor-pointer opacity-0 transition-all duration-100 group-hover/item:opacity-100 ${isSelected ? "opacity-100" : ""} text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground
+                              className={`absolute -right-5.5 top-0 hover:bg-accent rounded-full cursor-pointer opacity-0 transition-all duration-300 group-hover/item:opacity-100 ${isSelected ? "opacity-100" : ""}
                                 `}
                               aria-label="chat actions"
                             >
